@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title class="title">Top Ten</title>
+  <link rel="stylesheet" href="./styles/style.css" />
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="./icon-192.png">
+  <meta name="theme-color" content="#ffffff">
+</head>
+<body>
+  <section class="app" id="app">
+    <section id="settings-screen" class="screen settings-screen">
+      <fieldset>
+        <legend class="title text-light">Версия</legend>
+        <div class="flex-row">
+          <button class="btn" id="base-ver-btn">Базовая</button>
+          <button class="btn" id="adult-ver-btn">18+</button>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend class="title text-light">Только задания</legend>
+        <div class="description">Если у вас есть карты с номерами и жетоны, вы можете использовать этот режим.</div>
+        <button class="btn" id="show-task-btn">Показать задание</button>
+      </fieldset>
+      <div class="title text-light">-- ИЛИ --</div>
+      <fieldset>
+        <legend class="title text-light">Нет компонентов? Не проблема.</legend>
+        <div class="description">Вы можете играть в эту игру, используя только это приложение.</div>
+        <div class="players" id="players">
+          <div id="player-list" class="player-list"></div>
+          <button class="btn" id="start-game-btn" disabled>Старт</button>
+        </div>
+        <div class="add-player-form">
+          <input class="player-input" id="player-input" placeholder="Введите имя" />
+          <button class="btn" id="add-player-btn">Добавить</button>
+        </div>
+      </fieldset>
+    </section>
+
+    <section id="game-screen" class="screen">
+      <div id="top-bar" class="top-bar">
+        <button class="btn" id="players-mode-btn">Игроки</button>
+        <button class="btn" id="rank-mode-btn">Сортировать</button>
+        <button class="btn" id="tasks-mode-btn">Задание</button>
+        <button class="btn" id="next-btn">Следующий капитан</button>
+        <button class="btn" id="new-game-btn">Новая игра</button>
+      </div>
+
+      <div id="players-wrap" class="screen game-content flex-column">
+        <div class="description">Имя капитана выделено рамкой. Кликни на своем имени, чтобы посмотреть уровень интенсивности. Потом передай следующему игроку.</div>
+        <div id="players-content" class="flex-row"></div>
+      </div>
+      <div id="ranking-wrap" class="screen game-content flex-column">
+        <div class="description">Кликай на игроках по возрастанию уровня интенсивности.</div>
+        <div id="ranking-content" class="flex-row"></div>
+      </div>
+
+      <div id="task-content" class="game-content screen flex-column">
+        <div id="speech-bubble" class="speech-bubble"></div>
+        <div class="task-buttons flex-row">
+          <!-- <button class="btn" id="home-task-btn">↶ Домой</button> -->
+          <button class="btn" id="prev-task-btn">⇐ Предыдущее</button>
+          <button class="btn" id="next-task-btn">⇒ Следующее</button>
+        </div>
+        
+      </div>
+
+      <div id="bottom-bar" class="bottom-bar">
+        <div class="text-light" id="tokens">Раунд: <span id="round-count"></span> | Жетонов: <span id="token-count"></span></div>        
+      </div>
+      <div id="result" class="result"></div>
+    </section>
+
+  </section>
+  <section id="footer" class="footer">
+    <div class="gradient-bg"></div>
+  </section>
+  
+  <template id="player-template">
+    <button class="player-item">
+      <span class="player-name"></span>
+    </button>
+  </template>
+
+  <script type="module" src="./js/main.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('./js/service-worker.js');
+    }
+  </script>
+</body>
+</html>
