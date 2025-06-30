@@ -180,7 +180,7 @@ labels.bindTo('#home-task-btn', {fn: ({homeButton}) => homeButton});
 labels.bindTo('#prev-task-btn', {fn: ({previousTask}) => previousTask});
 labels.bindTo('#next-task-btn', {fn: ({nextTask}) => nextTask});
 labels.bindTo('#round', {fn: ({round}) => round});
-labels.bindTo('#tokens', {fn: ({tokens}) => tokens});
+labels.bindTo('#tokens-label', {fn: ({tokens}) => tokens});
 
 // Buttons
 playerInput.addEventListener('focus', function() { this.value = '' });
